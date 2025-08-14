@@ -1,0 +1,271 @@
+@charset "utf-8";
+:root {
+	/* First two used in setting the color for all the div sections */
+    --gradientDark: hsl(300, 71%, 61%);
+	--gradientLight: hsl(300, 75%, 69%);
+	/* ^^^ */
+    --sectionMargins: 10px;
+    --headerHeight: 4em;
+	--borderColor: darkblue;
+}
+
+
+html{
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--headerHeight) + var(--sectionMargins));
+}
+
+
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+	font-size: 22px;
+    margin: auto;
+	padding: var(--sectionMargins);
+}
+
+
+/* Header and its Links - Styling */
+header {
+	position: sticky;
+	top: 0;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	z-index: 5;
+	height: var(--headerHeight);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+    overflow: visible;
+	min-width: 705px;
+}
+header a {
+	position: relative;
+	margin: 0 10px;
+	display: block;
+	padding: 10px;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	line-height: 25px;
+	flex: 1;
+	font-size: 24px;
+	/* background-color: rgba(255, 128, 9, 0.5); */
+	text-decoration: none;
+}
+/* Adds the | character after each link automatically */
+header a:not(:first-child)::before {
+	content: "|";
+	color: gold;
+	position: absolute;
+	left: -10px; 
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+/* ^^^ */
+
+
+footer {
+	color:white;
+	font-size: 15px;
+}
+
+
+/* Background gradient */
+#background {
+    background-image: linear-gradient(rgb(255, 132, 152) 20%, rgb(0, 0, 107));
+    height:100vh;
+	width:100vw;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:-1;
+}
+/* ^^^ */
+
+
+/* Page content blocks */
+#pagecontent div, header, textarea, pre { 
+    border: 2px ridge var(--borderColor);
+    border-radius: 80px;
+    box-shadow: 0px 0px 6px 1px rgb(0, 0, 0, 0.5);
+	margin: auto;
+	margin-top:var(--sectionMargins);
+	margin-bottom:var(--sectionMargins);
+    padding-bottom:10px;
+	max-width: 1200px;
+	transition-duration:1s;
+	padding: var(--sectionMargins);
+	text-align: justify;
+	text-align-last: center;
+	min-width: 705px;
+}
+h1 {
+	color:white;
+	font-size: 50px;
+}
+#pagecontent div, textarea, pre {
+	background: radial-gradient(circle,rgb(0, 0, 200, 0.3) 0%, rgb(255, 255, 255, 0.02) 100%), linear-gradient(0deg, var(--gradientDark) 0%, var(--gradientLight) 100%);
+}
+#pagecontent p { padding: 0 2em; text-align: center;}
+#adoption a {
+	position: relative;
+	padding: 10px;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	line-height: 25px;
+	flex: 1;
+	font-size: 24px;
+	text-decoration: none;
+	background-color: rgba(255, 128, 9, 0.5);
+	width: fit-content;
+	display: block;
+	margin: 10px auto;
+}
+/* Changes the Background color of the Header*/
+header {
+    --gradientDark: hsl(34, 75%, 54%);
+	--gradientLight: hsl(32, 62%, 51%);
+	background: radial-gradient(circle,rgba(200, 0, 190, 0.3) 0%, rgb(255, 255, 255, 0.02) 100%), linear-gradient(0deg, var(--gradientDark) 0%, var(--gradientLight) 100%);
+}
+/* ^^^ */
+
+
+/* Photos on main page (thumbnail type size) */
+.photos {
+	position: relative;
+	width: 128px;
+	aspect-ratio: 1;
+	display: inline-block;
+	transition: transform 0.1s;
+	border-radius: 2.5%;
+	overflow: hidden;
+}
+/* Interactivity on hover */
+.photos:hover {
+	transform: scale(1.5);
+	z-index: 10;
+}
+/* Makes the images fit within the thumbail slot */
+.photos img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+/* ^^^ */
+
+
+/* Setting up the images to be spaced evenly on the main page */
+.gallery {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+/* ^^^ */
+
+
+/* Darkens the background when viewing images... like an overlay */
+#overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 9001;
+}
+/* ^^^ */
+
+/* Logo at the top of page */
+.logo{
+    height: 400px;
+    max-width: 1000px;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    filter: drop-shadow(0px 0px 10px rgb(173, 216, 230)) drop-shadow(0px 0px 15px darkblue);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin: auto;
+	margin-top: 15px;
+    margin-bottom: 5px;
+    z-index: 1;
+} 
+/* Logo Animation */
+.sizin { animation: sizin 4.3s ease-in-out alternate infinite; }
+.rotatin { animation: rotatin 3.5s ease-in-out alternate infinite; }
+@keyframes rotatin {
+    0% { transform: rotate(-1deg); }
+    100% { transform: rotate(1deg); }
+}
+@keyframes sizin {
+    0% { transform: scale(1.0); }
+    100% { transform: scale(0.9); }
+}
+/* ^^^ */
+
+
+/* Losing my mind.  I mean, the lightbox for the image gallery */
+/* Set the zone for images to appear */
+#lightbox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9002;
+    display: none;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    color: white;
+}
+/* Make sure images fit nicely in the zone */
+#lightbox img {
+    width: auto;
+    height: auto;
+    max-width: 80vw;
+    max-height: 60vh;
+    border-radius: 10px;
+    object-fit: contain;
+    box-shadow: 0 0 10px black;
+}
+/* Stylings to the caption below each image */
+#lightbox-caption {
+    margin-top: 10px;
+}
+/* Put buttons centered and spanning most of the image's height */
+#prev-btn, #next-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px; 
+    height: 80%;
+    background: none;
+    border: none;
+    font-size: 48px;
+    color: white;
+    z-index: 9003;
+	cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+/* Make button "glow" when hovered over (looks nice and helps with testing) */
+#prev-btn:hover, #next-btn:hover { opacity: 1; }
+/* Offset the arrows from the image (offset equal to their width) */
+#prev-btn { left: -80px; }
+#next-btn { right: -80px; }
+/* ^^^ */
